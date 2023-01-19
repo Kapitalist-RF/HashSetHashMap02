@@ -5,13 +5,14 @@ import java.util.List;
 public class WordsChecker {
 
     private String text;
+    private HashSet<String> hashSet;
 
     public WordsChecker(String text) {
         this.text = text;
+        this.hashSet = new HashSet<>(List.of(text.split("\\P{IsAlphabetic}+")));
     }
 
     public boolean hasWord(String str) {
-        HashSet<String> hashSet = new HashSet<>(List.of(text.split("\\P{IsAlphabetic}+")));
         if (hashSet.contains(str)) {
             return true;
         }
@@ -22,4 +23,7 @@ public class WordsChecker {
         return text;
     }
 
+    public HashSet<String> getHashSet() {
+        return hashSet;
+    }
 }
